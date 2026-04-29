@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Recarga de extintores en Bogotá y Cundinamarca. Servicio certificado, rápido y con entrega en 24h. Cotiza fácil por WhatsApp.">
+<title>ExtRuedas | Recarga y Mantenimiento de Extintores</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#22c55e;
+  --neon:#4ade80;
+  --bg:#050507;
+  --card:#0f1a12;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:#e5e7eb;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+  background:#000;
+  border-bottom:1px solid #1f2937;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Orbitron';
+  color:var(--primary);
+  font-size:1.8rem;
+}
+
+.menu{
+  display:flex;
+  gap:20px;
+}
+
+.menu a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  color:var(--primary);
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:100px 20px;
+  background: radial-gradient(circle, rgba(34,197,94,0.2), transparent);
+}
+
+.hero h1{
+  font-family:'Orbitron';
+  font-size:3rem;
+  text-shadow:0 0 20px var(--primary);
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:15px 25px;
+  background:var(--primary);
+  border-radius:10px;
+  box-shadow:0 0 15px var(--primary);
+  color:#000;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* SECTIONS */
+.section{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+.section h2{
+  font-family:'Orbitron';
+  color:var(--primary);
+  margin-bottom:30px;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:15px;
+  border:1px solid #1f2937;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 20px rgba(34,197,94,0.4);
+}
+
+.card i{
+  font-size:28px;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #1f2937;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#000;
+  font-size:26px;
+}
+.footer p {
+  margin:5px 0;
+}
+
+.footer strong {
+  color: var(--primary);
+  font-family: 'Orbitron';
+}
+.hero-pro{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+  gap:40px;
+}
+
+/* TEXTO */
+.hero-content{
+  max-width:550px;
+}
+
+.hero-pro h1{
+  font-family:'Orbitron';
+  font-size:3rem;
+  color:#e5e7eb;
+  text-shadow:0 0 20px #22c55e;
+}
+
+.hero-pro p{
+  margin-top:15px;
+  color:#9ca3af;
+  font-size:1.1rem;
+}
+
+.btn-outline{
+  padding:15px 25px;
+  border:1px solid #22c55e;
+  color:#22c55e;
+  border-radius:10px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn-outline:hover{
+  background:#22c55e;
+  color:#000;
+}
+
+/* VISUAL DERECHO */
+.hero-visual{
+  position:relative;
+  width:300px;
+  height:300px;
+}
+
+/* GLOW PRINCIPAL */
+.extintor-glow{
+  width:120px;
+  height:220px;
+  background:linear-gradient(180deg,#22c55e,#14532d);
+  border-radius:20px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 40px #22c55e, inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* ANILLOS */
+.ring{
+  position:absolute;
+  width:280px;
+  height:280px;
+  border:1px solid rgba(34,197,94,0.3);
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation:spin 10s linear infinite;
+}
+
+.ring2{
+  width:220px;
+  height:220px;
+  animation-direction:reverse;
+  animation-duration:6s;
+}
+
+/* ANIMACIÓN */
+@keyframes spin{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-pro{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hero-visual{
+    margin-top:40px;
+  }
+}
+.hero-buttons a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:220px; /* mismo ancho */
+  height:55px; /* misma altura */
+  border-radius:12px;
+  font-weight:600;
+  text-decoration:none;
+  font-size:16px;
+  transition:0.3s;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn{
+  background:#22c55e;
+  color:#000;
+  box-shadow:0 0 15px #22c55e;
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-outline{
+  border:1px solid #22c55e;
+  color:#22c55e;
+  background:transparent;
+}
+
+/* HOVER */
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 25px #22c55e;
+}
+
+.btn-outline:hover{
+  background:#22c55e;
+  color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <div class="logo">ExtRuedas</div>
+  <div class="menu">
+    <a href="#extintores">Extintores</a>
+    <a href="#digitales">Digitales</a>
+    <a href="#cobertura">Cobertura</a>
+    <a href="#terminos">Términos</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</div>
+
+<section class="hero-pro">
+  <div class="hero-content">
+    <h1>Recarga de Extintores en Cundinamarca en 24h</h1>
+    <p>Servicio certificado, rápido y sin interrupciones para tu negocio.</p>
+
+    <div class="hero-buttons">
+      <a href="https://wa.me/573208045923" class="btn">Cotiza en 1 minuto</a>
+      <a href="#contacto" class="btn-outline">Recarga en Linea</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="extintor-glow"></div>
+    <div class="ring"></div>
+    <div class="ring ring2"></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>¿Por qué elegir ExtRuedas?</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Entrega en 24h</h3>
+      <p>Atención rápida sin afectar tu operación.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cumple normativas</h3>
+      <p>Evita multas y problemas legales.</p>
+    </div>
+
+    <div class="card">
+      <h3>Atención directa</h3>
+      <p>Sin intermediarios ni sobrecostos.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="extintores" class="section">
+  <h2><i class="fas fa-fire-extinguisher"></i> Servicios de Extintores</h2>
+  <div class="grid">
+
+    <div class="card">
+      <i class="fas fa-oil-can"></i>
+      <h3>Recarga de extintores</h3>
+      <p>Servicio profesional para todo tipo de extintores.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-tools"></i>
+      <h3>Mantenimiento</h3>
+      <p>Revisión completa del sistema contra incendios.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-search"></i>
+      <h3>Inspección técnica</h3>
+      <p>Evaluación del estado y funcionamiento.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Asesoría</h3>
+      <p>Normativas y seguridad industrial.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="digitales" class="section">
+  <h2><i class="fas fa-mobile-alt"></i> Servicios Digitales</h2>
+  <div class="grid">
+ <div class="card">
+      <i class="fas fa-wallet"></i>
+      <h3>Recargas Nequi</h3>
+      <p>Apoyo en recargas digitales de forma informativa.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-university"></i>
+      <h3>Pagos PSE</h3>
+      <p>Orientación para pagos electrónicos.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-lock"></i>
+      <h3>Seguridad</h3>
+      <p>No solicitamos claves ni códigos personales.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-headset"></i>
+      <h3>Soporte</h3>
+      <p>Atención vía WhatsApp.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="cobertura" class="section">
+  <h2><i class="fas fa-map-marker-alt"></i> Cobertura</h2>
+  <div class="card">
+    <p><strong>Tocancipá:</strong> Cl 17 #14-1, Cundinamarca</p>
+    <p><strong>Cajica:</strong> Cl. 7 #9-43, Cundinamarca</p>
+    <p>Atención sujeta a disponibilidad</p>
+  </div>
+</section>
+
+<section id="terminos" class="section">
+  <h2><i class="fas fa-file-contract"></i> Términos y Condiciones</h2>
+  <div class="card">
+    <p>Servicios informativos y sujetos a disponibilidad.</p>
+    <p>No garantizamos tiempos exactos sin confirmación previa.</p>
+    <p>El usuario es responsable de validar pagos.</p>
+    <p>No solicitamos datos sensibles.</p>
+  </div>
+</section>
+
+<section id="privacidad" class="section">
+  <h2><i class="fas fa-user-shield"></i> Privacidad</h2>
+  <div class="card">
+    <p>No compartimos datos personales.</p>
+    <p>No almacenamos información financiera.</p>
+    <p>Uso exclusivo para contacto.</p>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <h2><i class="fas fa-phone"></i> Contacto</h2>
+  <div class="card">
+    <p>WhatsApp: 3208045923</p>
+    <p>Email: extruedas@gmail.com</p>
+  </div>
+</section>
+
+<section class="hero">
+  <h2>¿Necesitas recargar tus extintores hoy?</h2>
+  <p>Agenda ahora y recibe atención inmediata</p>
+  <a href="https://wa.me/573208045923" class="btn">Hablar por WhatsApp</a>
+</section>
+
+<div class="footer">
+  <p><strong>ExtRuedas</strong></p>
+  
+  <p>Tocancipá: Cl 17 #14-1, Cundinamarca</p>
+  <p>Cajicá: Cl. 7 #9-43, Cundinamarca</p>
+
+  <p style="margin-top:10px;">
+    WhatsApp: 3208045923 | Email: extruedas@gmail.com
+  </p>
+
+  <p style="margin-top:10px; font-size:14px; color:#9ca3af;">
+    © 2026 ExtRuedas | Todos los derechos reservados
+  </p>
+</div>
+
+<a href="https://wa.me/573208045923" class="whatsapp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
